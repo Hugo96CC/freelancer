@@ -1,0 +1,346 @@
+:root{/*Pseudo selector*/
+
+    /*Custom properties*/
+    --blanco: #FFFFFF;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+
+}
+
+/*Hack para utilizar eficientemente los rem*/
+/*rem se adapta mejor a los dispositivos*/
+
+/* Globales*/
+
+html{
+    font-size: 62.5%;/*Reiniciamos el tamaño de la pagina*/
+    box-sizing: border-box; /* Hack para Box Model*/
+    scroll-snap-type: y mandatory;/*Realizamos el scroll snap*/
+
+}
+
+/* Scroll Snap */
+
+.navegacion-principal,
+.stop-servicio,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+}
+
+/*ejemplo: .titulo, .subtitulo. subtitulo:before*/
+*, *:before, *:after {
+    box-sizing: inherit;
+    
+    
+}
+
+body{
+    font-size: 16px;/* 1rem = 10px*/
+    font-family: 'Krub', sans-serif; /* Fuente de Google */
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);/*Degradado de nuestra pagina empieza con gris y termina con blanco*/
+}
+/*Fin Hack */
+
+.contenedor{
+    max-width: 120rem;/*Toma como maximo 120 rem sino esta disponiblr toma todo el ancho de la pantalla*/
+    margin: 0 auto;
+   
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%; /*Del Boton contratar que es un <a>*/
+    text-align: center;
+    border: none;
+}
+/*Resolucion de una tablets en adelante*/
+@media (min-width: 768px) {
+    .boton{
+        width: auto;/*Reseteamos el tamaño del boton*/
+    }
+    
+}
+.boton:hover{
+    cursor: pointer;
+}
+
+/*Sombra del contenido principal*/
+.sombra{  
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Tipografia */
+
+h1{
+    font-size: 3.8rem;
+
+}
+
+h2{
+    font-size: 2.8rem;
+
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1, h2, h3{
+    text-align: center;
+    
+}
+
+/* Titulos */
+
+.titulo span{
+    font-size: 2rem;
+    
+}
+
+/* UTILIDADES */
+
+.w-sm-100{
+    width: 100%;
+}
+
+/* Damos un tamaño pequeño a nuestro boton enviar */
+@media (min-width: 768px) {
+
+    .w-sm-100{
+        width: auto;
+    }
+   
+}
+
+/* Alineamos el boton con Flex*/
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+
+/* Navegacion principal*/
+
+/*Forma de escribir codigo CSS: UTILITY FIRST*/
+.nav-bg{
+    background-color: var(--secundario);
+
+}
+.navegacion-principal{
+   
+    /*UTILIZAMOS FLEXBOX*/
+    display: flex;
+    flex-direction: column;
+  
+    
+}
+
+/*Resolucion de una tablets en adelante*/
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;/*Permite dar espacio entre los enlaces de navegacion*/
+        
+    }
+    
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;/*Centramos los enlaces en dispositivos moviles*/
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;/*Grosor de la fuente*/
+    padding: 1rem;
+}
+
+/*Cambia de color los enlcaces al posicionarse en los mismos*/
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+    
+    
+}
+
+/* Hero */
+
+/*1ra imagen */
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;/*Imagen se acopla a los tamaños grandes*/
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/*Tranparencia de 1ra imagen*/
+.contenido-hero{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7);/*Anterior*/
+    background-color: rgb( 0 0 0 / 70% ); /*Actual*/
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;/*Alinear horizontalmente (Column)*/
+    justify-content: center; /*Alinear verticalmente (Column)*/
+
+   
+}
+
+/*Forma de escribir codigo CSS: Modulos*/
+.contenido-hero h2,
+.contenido-hero p{
+
+    color: var(--blanco);
+
+}
+
+/*Alineamos el icono de ubicacion con el texto*/
+.contenido-hero .ubicacion{
+    display: flex; 
+    align-items: flex-end;
+
+}
+
+
+
+/* Colocar en 3 columnas los servicios cuando see esta resolucion */
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);/* 3 columns */
+        column-gap: 1rem; /*Separacion entre las columnas de CSS Grid*/
+
+    }
+    
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;/*Centramos horizontalmente*/
+
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: 400; /*Grosor de la fuente*/
+}
+.servicio p{
+    line-height: 2; /*Interlineado de los parrafos*/
+    text-align: center; /*Centramos el texto*/
+}
+
+.servicio .iconos{
+    /*Tamaño del circulo*/
+    height: 15rem;
+    width: 15rem;
+    /*Color del circulo*/
+    background-color: var(--primario);
+    /*Circulo de los iconos*/
+    border-radius: 50%;
+    display: flex;
+    /*Alineamos y centramos los iconos*/
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+/* Contacto */
+
+.formulario{
+    background-color: var(--gris);
+    width: min( 60rem, 100%);/*Toma el valor mas pequeño en moviles, tablet, laptops*/
+    margin: 0 auto; /*Centramos el formulario, cuando su padre no tiene un display flex*/
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset {
+    border: none; /*Quitamos el borde del formulario*/
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+
+}
+
+/*Posicionamos inout de correo y mensaje para que ocupen todo el espacion disponiblr*/
+@media (min-width: 768px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    /*Seleciona los campos 3 y 4 para explanderlos a la columna 1 a la 3*/
+    .campo:nth-child(3),
+    .campo:nth-child(4){
+        grid-column: 1 / 3;
+        
+    }
+    
+}
+
+/*Diseño del label del formulario*/
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+/* Altura del textarea*/
+.campo textarea{
+    height: 20rem;
+}
+
+/* Diseño de los input*/
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/* Footer */
+
+.footer{
+    text-align: center;
+}
+
+
